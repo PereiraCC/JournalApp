@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,12 +37,15 @@ export const RegisterScreen = () => {
 
         if( name.trim().length === 0 ){
             dispatch( setError('Name is required'));
+            Swal.fire('Error', 'Name is required', 'error');
             return false;
         } else if ( !validator.isEmail(email) ) {
             dispatch(setError('Email is not valid'));
+            Swal.fire('Error', 'Email is not valid', 'error');
             return false;
         } else if( password !== password2 || password.length < 5) {
             dispatch(setError('Password should be at least 6 characters and match each other'));
+            Swal.fire('Error', 'Password should be at least 6 characters and match each other', 'error');
             return false;
         }
 
@@ -53,15 +58,6 @@ export const RegisterScreen = () => {
             <h3 className="auth__title">Register</h3>
 
             <form onSubmit={handleRegister}>
-
-                {
-                    msgError && 
-                    (
-                        <div className="auth__alert-error">
-                            {msgError}
-                        </div>
-                    )
-                }
 
                 <input
                     type="text"
