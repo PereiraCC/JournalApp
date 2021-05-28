@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types'
 
@@ -9,6 +10,25 @@ export const startLoginEmailPassword = (email, password) => {
             dispatch( login(123, 'Pedro') ); 
 
         }, 3500);
+
+    }
+}
+
+export const startRegisterWithEmailPasswordName = (email, password, name ) => {
+    return (dispatch) => {
+
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then( async ({user}) => {
+
+                await user.updateProfile({ displayName: name });
+
+                dispatch( 
+                    login(user.uid, user.displayName) 
+                ); 
+            })
+            .catch(e => {
+                console.log(e);
+            });
 
     }
 }
