@@ -10,7 +10,7 @@ import { useForm } from '../../hooks/useForm'
 export const LoginScreen = () => {
 
     const dispatch = useDispatch();
-    const { msgError } = useSelector( state => state.ui );
+    const { loading, msgError} = useSelector( state => state.ui );
 
     const [ formValues, handleInputChange ] = useForm({
         email: 'carlos@gmail.com',
@@ -84,6 +84,7 @@ export const LoginScreen = () => {
                 <button
                     type="submit"
                     className="btn btn-primary btn-block"
+                    disabled={ loading }
                 >
                     Login
                 </button>
