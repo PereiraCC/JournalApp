@@ -59,7 +59,7 @@ export const NoteScreen = () => {
                     && (
                         <div className="notes__image">
                             <img
-                                src="https://cdn.dribbble.com/users/1803663/screenshots/11400179/media/25558ede8bcb553fd48d7ed339e136ee.png?compress=1&resize=400x300"
+                                src={note.url}
                                 alt="imagen"
                             />
                         </div>
