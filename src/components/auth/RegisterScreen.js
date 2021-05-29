@@ -2,7 +2,7 @@ import Swal from 'sweetalert2'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm';
@@ -12,7 +12,6 @@ import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
-    const { msgError } = useSelector( state => state.ui );
 
 
     const [ formValues, handleInputChange ] = useForm({

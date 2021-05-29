@@ -1,5 +1,4 @@
 
-import { bindActionCreators } from "redux";
 import { types } from "../types/types";
 /*
     {
